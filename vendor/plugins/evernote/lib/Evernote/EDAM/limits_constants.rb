@@ -4,7 +4,7 @@
 # DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
 #
 
-require 'limits_types'
+require 'Evernote/EDAM/limits_types'
 
       module Evernote
         module EDAM

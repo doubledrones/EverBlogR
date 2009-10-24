@@ -5,7 +5,7 @@
 #
 
 require 'thrift'
-require 'note_store_types'
+require 'Evernote/EDAM/note_store_types'
 
             module Evernote
               module EDAM
