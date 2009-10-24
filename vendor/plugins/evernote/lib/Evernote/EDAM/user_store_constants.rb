@@ -4,7 +4,7 @@
 # DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
 #
 
-require 'user_store_types'
+require 'Evernote/EDAM/user_store_types'
 
       module Evernote
         module EDAM

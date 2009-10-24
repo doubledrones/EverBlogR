@@ -4,7 +4,7 @@
 # DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
 #
 
-require 'types_types'
+require 'Evernote/EDAM/types_types'
 
       module Evernote
         module EDAM
