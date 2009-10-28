@@ -12,24 +12,62 @@ require "Evernote/EDAM/limits_constants.rb"
 
 class Note
 
-  def self.notebook
-    userStoreTransport = Thrift::HTTPClientTransport.new(AppConfig.evernote['userStoreUrl'])
-    userStoreProtocol = Thrift::BinaryProtocol.new(userStoreTransport)
-    userStore = Evernote::EDAM::UserStore::UserStore::Client.new(userStoreProtocol)
-    versionOK = userStore.checkVersion("Ruby EDAMTest",
-                                    Evernote::EDAM::UserStore::EDAM_VERSION_MAJOR,
-                                    Evernote::EDAM::UserStore::EDAM_VERSION_MINOR)
-    raise "Is my EDAM protocol version up to date?  #{versionOK}" unless versionOK
-    authResult = userStore.authenticate(AppConfig.evernote['username'], AppConfig.evernote['password'],
-                                        AppConfig.evernote['consumerKey'], AppConfig.evernote['consumerSecret'])
-    user = authResult.user
-    authToken = authResult.authenticationToken
-    
-    noteStoreUrl = AppConfig.evernote['noteStoreUrlBase'] + user.shardId
-    noteStoreTransport = Thrift::HTTPClientTransport.new(noteStoreUrl)
-    noteStoreProtocol = Thrift::BinaryProtocol.new(noteStoreTransport)
-    noteStore = Evernote::EDAM::NoteStore::NoteStore::Client.new(noteStoreProtocol)
+  def self.userStoreTransport
+    Thrift::HTTPClientTransport.new(AppConfig.evernote['userStoreUrl'])
+  end
 
+  def self.userStoreProtocol
+    Thrift::BinaryProtocol.new(userStoreTransport)
+  end
+
+  def self.userStore
+    Evernote::EDAM::UserStore::UserStore::Client.new(userStoreProtocol)
+  end
+
+  def self.versionOK
+    userStore.checkVersion(
+      "Ruby EDAMTest",
+      Evernote::EDAM::UserStore::EDAM_VERSION_MAJOR,
+      Evernote::EDAM::UserStore::EDAM_VERSION_MINOR
+    )
+  end
+
+  def self.version_ok!
+    raise "Is my EDAM protocol version up to date?  #{versionOK}" unless versionOK
+  end
+
+  def self.authResult
+    version_ok!
+    userStore.authenticate(
+      AppConfig.evernote['username'],
+      AppConfig.evernote['password'],
+      AppConfig.evernote['consumerKey'],
+      AppConfig.evernote['consumerSecret']
+    )
+  end
+
+  def self.user
+    authResult.user
+  end
+
+  def self.noteStoreUrl
+    AppConfig.evernote['noteStoreUrlBase'] + user.shardId
+  end
+
+  def self.noteStoreTransport
+
+    Thrift::HTTPClientTransport.new(noteStoreUrl)
+  end
+
+  def self.noteStoreProtocol
+    Thrift::BinaryProtocol.new(noteStoreTransport)
+  end
+
+  def self.noteStore
+    Evernote::EDAM::NoteStore::NoteStore::Client.new(noteStoreProtocol)
+  end
+
+  def self.notebook
     noteStore.getPublicNotebook(user.id, AppConfig.evernote['public_notebooks']['marcinmisnotebook'])
   end
 
