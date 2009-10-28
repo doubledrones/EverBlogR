@@ -18,6 +18,7 @@ class Note
 
   def self.find_all
     raise 'Write me. Please!!!'
+    # note_store.findNotes(authentication_token #WTF?, filter, offset, maxNotes))
   end
 
   private
@@ -35,7 +36,7 @@ class Note
     end
 
     def self.version_ok?
-      user_store.checkVersion(
+      @@version_ok ||= user_store.checkVersion(
         "Ruby EDAMTest",
         Evernote::EDAM::UserStore::EDAM_VERSION_MAJOR,
         Evernote::EDAM::UserStore::EDAM_VERSION_MINOR
@@ -74,6 +75,10 @@ class Note
 
     def self.note_store
       @@note_store ||= Evernote::EDAM::NoteStore::NoteStore::Client.new(note_store_protocol)
+    end
+
+    def self.authentication_token
+      @@authentication_token ||= auth_result.authenticationToken
     end
 
 end
