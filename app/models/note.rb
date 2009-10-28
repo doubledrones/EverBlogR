@@ -12,13 +12,21 @@ require "Evernote/EDAM/limits_constants.rb"
 
 class Note
 
+  @@find_notes = {}
+
+  NOTE_OFFSET = 0
+  NOTE_NUMBER = 10
+
   def self.notebook
     note_store.getPublicNotebook(user.id, AppConfig.evernote['public_notebooks']['marcinmisnotebook'])
   end
 
-  def self.find_all
-    raise 'Write me. Please!!!'
-    # note_store.findNotes(authentication_token #WTF?, filter, offset, maxNotes))
+  def self.find_all(offset = NOTE_OFFSET, number = NOTE_NUMBER)
+    get_notes(offset, number)
+  end
+
+  def self.find_first(offset = NOTE_OFFSET)
+    get_notes(offset, 1).first
   end
 
   private
@@ -79,6 +87,14 @@ class Note
 
     def self.authentication_token
       @@authentication_token ||= auth_result.authenticationToken
+    end
+
+    def self.get_notes(offset = NOTE_OFFSET, number = NOTE_NUMBER)
+      find_notes(offset, number).notes
+    end
+
+    def self.find_notes(offset = NOTE_OFFSET, number = NOTE_NUMBER)
+      note_store.findNotes(authentication_token, Evernote::EDAM::NoteStore::NoteFilter.new, offset, number)
     end
 
 end

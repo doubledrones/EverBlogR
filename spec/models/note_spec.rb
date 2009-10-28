@@ -16,4 +16,24 @@ describe Note do
     end
   end
 
+  describe 'find_all' do
+    before do
+      @find_all ||= Note.find_all
+    end
+
+    it 'should find first note' do
+      @find_all.first.title.should == 'Welcome to Evernote!'
+    end
+  end
+
+  describe 'find_first' do
+    before do
+      @find_first ||= Note.find_first
+    end
+
+    it 'should find first note' do
+      @find_first.title.should == 'Welcome to Evernote!'
+    end
+  end
+
 end
