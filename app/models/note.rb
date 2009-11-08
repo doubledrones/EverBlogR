@@ -29,6 +29,14 @@ class Note
     get_notes(offset, 1).first
   end
 
+  def created_at_unix
+    created / 1000
+  end
+
+  def created_at
+    Time.at(created_at_unix)
+  end
+
   private
 
     def self.user_store_transport

@@ -36,4 +36,17 @@ describe Note do
     end
   end
 
+  it 'created_at_unix should be created divided by 1000' do
+    note = Note.new
+    note.should_receive(:created).and_return(1225243153000)
+    note.created_at_unix.should == 1225243153
+  end
+
+  it 'created_at should return proper time from unix time in created_at_unix' do
+    note = Note.new
+    note.should_receive(:created_at_unix).and_return(1225243153)
+    Time.should_receive(:at).with(1225243153).and_return(:time)
+    note.created_at.should == :time
+  end
+
 end
