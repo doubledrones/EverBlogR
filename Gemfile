@@ -13,3 +13,8 @@ gem 'rake', '=0.8.7'
 gem 'activerecord', '=2.3.5'
 gem 'rails', '=2.3.5'
 gem 'haml', '=2.2.14'
+
+# needed for test (config/enviroment.rb)
+gem 'rspec', '=1.2.9'
+gem 'rspec-rails', '=1.2.9'
+gem 'thoughtbot-shoulda', '=2.10.2'

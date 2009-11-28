@@ -23,9 +23,9 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "haml", :version => "2.2.14"
   if RAILS_ENV == 'test'
-    config.gem "rspec", :lib => false, :version => ">= 1.2.0"
-    config.gem "rspec-rails", :lib => false, :version => ">= 1.2.0"
-    config.gem 'thoughtbot-shoulda', :lib => false, :source => 'http://gems.github.com'
+    config.gem "rspec", :lib => false, :version => "1.2.9"
+    config.gem "rspec-rails", :lib => false, :version => "1.2.9"
+    config.gem 'thoughtbot-shoulda', :lib => false, :source => 'http://gems.github.com', :version => '=2.10.2'
   end
 
   # Only load the plugins named here, in the order given (default is alphabetical).
