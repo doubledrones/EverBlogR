@@ -26,6 +26,8 @@ Rails::Initializer.run do |config|
     config.gem "rspec", :lib => false, :version => "1.2.9"
     config.gem "rspec-rails", :lib => false, :version => "1.2.9"
     config.gem 'thoughtbot-shoulda', :lib => false, :source => 'http://gems.github.com', :version => '=2.10.2'
+    config.gem 'ZenTest', :version => '4.1.4'
+    config.gem 'autotest-rails', :version => '4.1.0'
   end
 
   # Only load the plugins named here, in the order given (default is alphabetical).
