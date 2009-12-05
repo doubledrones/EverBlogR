@@ -10,15 +10,19 @@ require "Evernote/EDAM/user_store_constants.rb"
 require "Evernote/EDAM/note_store"
 require "Evernote/EDAM/limits_constants.rb"
 
-class Note
+class Note < Evernote::EDAM::Type::Note
 
   @@find_notes = {}
 
   NOTE_OFFSET = 0
   NOTE_NUMBER = 10
 
+  def self.notebook_name
+    raise "Implement me"
+  end
+
   def self.notebook
-    note_store.getPublicNotebook(user.id, AppConfig.evernote['public_notebooks']['marcinmisnotebook'])
+    note_store.getPublicNotebook(user.id, notebook_name)
   end
 
   def self.find_all(offset = NOTE_OFFSET, number = NOTE_NUMBER)
@@ -26,11 +30,7 @@ class Note
   end
 
   def self.find_first(offset = NOTE_OFFSET)
-    get_notes(offset, 1).first
-  end
-
-  def created_at_unix
-    created / 1000
+    get_notes(offset, 1).first # self # Evernote::EDAM::Type::Note
   end
 
   def created_at
@@ -97,12 +97,22 @@ class Note
       @@authentication_token ||= auth_result.authenticationToken
     end
 
+    def initialize(note)
+      note.struct_fields.each do |struct_fields|
+        # assign values, create methods
+      end
+    end
+
     def self.get_notes(offset = NOTE_OFFSET, number = NOTE_NUMBER)
-      find_notes(offset, number).notes
+      find_notes(offset, number).notes.collect { |note| self.new(note) }
     end
 
     def self.find_notes(offset = NOTE_OFFSET, number = NOTE_NUMBER)
       note_store.findNotes(authentication_token, Evernote::EDAM::NoteStore::NoteFilter.new, offset, number)
+    end
+
+    def created_at_unix
+      created / 1000
     end
 
 end

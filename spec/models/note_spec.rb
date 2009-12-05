@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Note do
 
-  describe 'noetbook' do
+  describe 'notebook' do
     before do
       @notebook ||= Note.notebook
     end
@@ -30,6 +30,11 @@ describe Note do
     it 'should find first note' do
       @find_first.title.should == 'Welcome to Evernote!'
     end
+  end
+
+  it 'should have created' do
+    note = Note.new
+    note.created
   end
 
   it 'created_at_unix should be created divided by 1000' do
