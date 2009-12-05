@@ -22,6 +22,7 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "haml", :version => "2.2.14"
+  config.gem "pg", :version => "0.8.0"
   if RAILS_ENV == 'test'
     config.gem "rspec", :lib => false, :version => "1.2.9"
     config.gem "rspec-rails", :lib => false, :version => "1.2.9"

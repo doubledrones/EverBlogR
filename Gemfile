@@ -13,6 +13,7 @@ gem 'rake', '=0.8.7'
 gem 'activerecord', '=2.3.5'
 gem 'rails', '=2.3.5'
 gem 'haml', '=2.2.14'
+gem 'pg', '=0.8.0'
 
 # needed for test (config/enviroment.rb)
 gem 'rspec', '=1.2.9'
