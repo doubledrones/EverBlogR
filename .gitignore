@@ -1,2 +1,5 @@
 config/evernote.yml
+vendor/bundler_gems/
+.DS_Store
+bin/
 log

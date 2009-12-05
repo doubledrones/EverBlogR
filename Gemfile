@@ -1,3 +1,6 @@
+bundle_path "vendor/bundler_gems"
+
+
 clear_sources
 source 'http://gemcutter.org'
 source 'http://gems.github.com'
