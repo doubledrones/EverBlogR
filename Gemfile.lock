@@ -1,0 +1,55 @@
+GEM
+  remote: http://rubygems.org/
+  remote: http://gems.github.com/
+  specs:
+    ZenTest (4.1.4)
+    actionmailer (2.3.5)
+      actionpack (= 2.3.5)
+    actionpack (2.3.5)
+      activesupport (= 2.3.5)
+      rack (~> 1.0.0)
+    activerecord (2.3.5)
+      activesupport (= 2.3.5)
+    activeresource (2.3.5)
+      activesupport (= 2.3.5)
+    activesupport (2.3.5)
+    autotest-rails (4.1.0)
+      ZenTest
+    haml (2.2.14)
+    mime-types (1.16)
+    pg (0.8.0)
+    rack (1.0.1)
+    rails (2.3.5)
+      actionmailer (= 2.3.5)
+      actionpack (= 2.3.5)
+      activerecord (= 2.3.5)
+      activeresource (= 2.3.5)
+      activesupport (= 2.3.5)
+      rake (>= 0.8.3)
+    rake (0.8.7)
+    rspec (1.2.9)
+    rspec-rails (1.2.9)
+      rack (>= 1.0.0)
+      rspec (>= 1.2.9)
+    thoughtbot-shoulda (2.10.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ZenTest (= 4.1.4)
+  actionmailer (= 2.3.5)
+  actionpack (= 2.3.5)
+  activerecord (= 2.3.5)
+  activeresource (= 2.3.5)
+  activesupport (= 2.3.5)
+  autotest-rails (= 4.1.0)
+  haml (= 2.2.14)
+  mime-types (= 1.16)
+  pg (= 0.8.0)
+  rack (= 1.0.1)
+  rails (= 2.3.5)
+  rake (= 0.8.7)
+  rspec (= 1.2.9)
+  rspec-rails (= 1.2.9)
+  thoughtbot-shoulda (= 2.10.2)
