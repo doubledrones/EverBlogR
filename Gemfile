@@ -2,10 +2,9 @@ source :rubygems
 source 'http://gems.github.com'
 
 
-gem 'rack', '=1.0.1'
 gem 'mime-types', '=1.16'
 gem 'rake', '=0.8.7'
-gem 'rails', '=2.3.5'
+gem 'rails', '=2.3.11'
 gem 'haml', '=2.2.14'
 gem 'pg', '=0.8.0'
 
